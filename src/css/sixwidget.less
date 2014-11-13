@@ -1,0 +1,250 @@
+@font: #222;
+//@bg: #f0f0f0;
+@bg: #fff;
+@fontlight: #fff;
+@active: #3b4e78;
+@accent1: darken(#f0f0f0,10%); // table borders, hovers
+@accent2: #777; // table header text
+//@tablebg: #fff;
+@tablebg: #f0f0f0;
+
+body.example {
+    font-family: 'Arial', sans-serif;
+    margin: 0; padding: 0;
+}
+
+#scoreixlive_container {
+ 
+    color: @font;
+    background-color: @bg;
+    padding: 5px;
+    
+    .inline {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+    }
+    
+    .resetli {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .sixnote {
+        margin-top: 25px;
+        font-size: 0.8em;
+        color: @accent2;
+        a {
+            color: @font;
+            text-decoration: none;
+        }
+    }
+    
+    ul.scoreix_live_drawlist {
+        .resetli;
+        li {
+            .inline;
+            .resetli;
+            margin-right: 10px;
+            margin-bottom: 5px;
+            
+            a {
+                padding: 5px 10px;
+                text-decoration: none;
+                color: @font;
+                border-radius: 5px;
+                
+                &:hover {
+                    background-color: @accent1;
+                }
+                
+                &.active {
+                    color: @fontlight;
+                    background-color: @active;
+                }
+            }
+        }
+    }
+    
+    .scoreix_live_boards {
+        .boards-enter {
+            opacity: 0.01;
+            transition: opacity .3s ease-in;
+        }
+        
+        .boards-enter.boards-enter-active {
+            opacity: 1;
+        }
+            
+        .boards-leave {
+            opacity: 1;
+            transition: opacity .3s ease-in;
+        }
+        
+        .boards-leave.boards-leave-active {
+            opacity: 0.01;
+        }        
+    }
+    
+    .scoreix_live_gamelist, .scoreix_live_board {
+        
+        .gamelist-enter {
+            opacity: 0.01;
+            transition: opacity .3s ease-in;
+        }
+        
+        .gamelist-enter.gamelist-enter-active {
+            opacity: 1;
+        }
+            
+        .gamelist-leave {
+            opacity: 1;
+            transition: opacity .3s ease-in;
+        }
+        
+        .gamelist-leave.gamelist-leave-active {
+            opacity: 0.01;
+        }
+        
+        table {
+            
+            width: 90%;
+            margin-top: 15px;
+            
+            thead > tr {
+                position: static;
+                border-bottom: 2px solid @accent1;
+            }
+            
+            tr {
+                display: table-row;
+                
+                &.belowFold {
+                    display: none;
+                }
+            }
+            
+            th, td {
+                display: table-cell;
+                
+                &.end {
+                    width: 25px;
+                    text-align: center;
+                }
+                
+                &.endWide {
+                    width: 40px;
+                    text-align: center;
+                }
+                
+                &.hammer {
+                    padding: 0;
+                    text-align: center;
+                    
+                    > img {
+                        width: 18px;
+                        height: auto;
+                        margin-top: 3px;
+                    }
+                }
+                
+                &.left {
+                    text-align: left;
+                }
+                
+                &.notes {
+                    font-size: 0.7em;
+                    text-transform: uppercase;
+                    color: @accent2;
+                }
+                
+                &.loadMore {
+                    text-align: center;
+                    cursor: pointer;
+                    color: #777;
+                    font-size: 0.9em;
+                    
+                    &.hide {
+                        display: none;
+                    }
+                }
+                
+                padding: 4px;
+                border: 1px solid @accent1;
+            }
+            
+            th {
+                color: @accent2;
+                
+                &.hammer > img {
+                    opacity: 0.3;
+                }
+            }
+            
+        }
+        
+        @media (max-width: 767px) {
+            table {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 565px) {
+            table {
+                font-size: 0.75em;
+                
+                th, td {
+                    &.end {
+                        width: 15px;
+                    }
+                    
+                    &.hammer {
+                        >img {
+                            width: 12px;
+                        }
+                    }
+                    
+                    &.notes {
+                        font-size: 0.85em;
+                    }
+                }
+            }
+        }
+    }
+    
+    table {
+        border-collapse: collapse;
+        background-color: @tablebg;
+        box-shadow: 1px 1px 2px #aaa;
+        transition: background 0.5s;
+        
+        &.live {
+            background-color: @active;
+            color: @fontlight;
+            
+            thead > tr {
+                border-bottom: 2px solid transparent;
+            }
+            
+            th, td {
+                
+                &.notes {
+                    color: @fontlight;
+                }
+                
+                border: 1px solid transparent;
+            }
+            
+            th {
+                color: @fontlight;
+            }
+        }
+    }
+    
+    .scoreix_live_board {
+        table {
+            width: 95%;
+        }
+    }
+}
